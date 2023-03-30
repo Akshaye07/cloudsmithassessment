@@ -1,0 +1,26 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading..." size="large"></lightning-spinner>
+    </template>
+    <div class="slds-p-around_xx-small" >
+        <lightning-card  title="Information Regarding Banking/Public Holidays" allign ="Centre">
+    
+             <div class="slds-p-around_xx-small">
+            <lightning-input type="text"  name="name" label="ID Number" placeholder="Type Your South Africa ID Number"  
+            onchange={nameChange}
+            pattern="[0-9]+"
+                                    message-when-pattern-mismatch="Only alphanumeric and unique values are allowed" 
+                                    message-when-bad-input="duplicate values are allowed"
+                                    maxlength="13" ></lightning-input>
+            <lightning-helptext content="The ID Number should be a combination of 13 digits eg:1234567891234"></lightning-helptext>
+             </div>
+            <div class="slds-p-around_xx-small">
+            <lightning-button variant="Brand" label="Search" disabled={showButton} title="Search" onclick={handleSearch}></lightning-button>
+            </div>
+            <template if:true={message}>
+                <lightning-formatted-rich-text value={message}></lightning-formatted-rich-text>
+            </template>
+    </lightning-card>   
+    </div>
+
+</template>
